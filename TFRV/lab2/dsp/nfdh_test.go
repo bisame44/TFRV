@@ -3,8 +3,8 @@ package dsp_test
 import (
 	"testing"
 
-	"github.com/Belstowe/distrib-cs-1-autumn/lab2/dsp"
-	"github.com/Belstowe/distrib-cs-1-autumn/lab2/tasks"
+	"github.com/bisame44/TFRV/tree/main/TFRV/lab2/dsp"
+	"github.com/bisame44/TFRV/tree/main/TFRV/lab2/tasks"
 )
 
 func TestNFDH(t *testing.T) {
