@@ -3,7 +3,7 @@ package stm_test
 import (
 	"testing"
 
-	"github.com/Belstowe/distrib-cs-1-autumn/lab3/stm"
+	"github.com/bisame44/TFRV/tree/main/TFRV/lab3/stm"
 )
 
 func TestStrategyMatrix(t *testing.T) {
