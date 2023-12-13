@@ -1,0 +1,104 @@
+#!/usr/bin/env bash
+
+bold=$(tput bold)
+normal=$(tput sgr0)
+
+function prompt_main_menu() {
+    >&2 echo "${bold}Главное меню${normal}"
+    while true; do
+        >&2 echo "${bold}1)${normal} Построить расписание решения параллельных задач на распределённой ВС"
+        >&2 echo "${bold}2)${normal} Построить решение задачи \"Диспатчер-вычислительный центр\""
+        >&2 echo "${bold}3)${normal} Выйти"
+        read -n1 -r ans
+        case $ans in
+            [123] ) break;;
+            * ) >&2 echo -e "\nНужно выбрать элемент меню (1, 2, 3).";;
+        esac
+    done
+    >&2 echo
+    echo $ans
+}
+
+function prompt_packing_algo() {
+    >&2 echo "Выберите алгоритм:"
+    while true; do
+        >&2 echo "${bold}1)${normal} NFDH (Next Fit Decreasing High)"
+        >&2 echo "${bold}2)${normal} FFDH (First Fit Decreasing High)"
+        read -n1 -r ans
+        case $ans in
+            1 ) echo "nfdh"; break;;
+            2 ) echo "ffdh"; break;;
+            * ) >&2 echo -e "\nНужно выбрать элемент меню (1, 2).";;
+        esac
+    done
+    >&2 echo
+}
+
+function prompt_file() {
+    read -r -p "Введите путь к файлу с задачами: " ans
+    >&2 echo
+    echo $ans
+}
+
+function prompt_num_machines() {
+    read -r -p "Введите число элементарных машин: " ans
+    >&2 echo
+    echo $ans
+}
+
+function prompt_epsilon() {
+    read -r -p "Введите точность оптимальных стратегий игры (по умолчанию 0.01): " ans
+    >&2 echo
+    echo ${ans:-0.01}
+}
+
+function prompt_yes_no() {
+    >&2 echo -n -e "$1 ([Дд]а/[Нн]ет/[Yy]es/[Nn]o) "
+    while true; do
+        read -n1 -r ans
+        case $ans in
+            [ДдYy]* ) echo "$2"; break;;
+            [НнNn]* ) echo "$3"; break;;
+            * ) ;;
+        esac
+    done
+    >&2 echo
+}
+
+function prompt_matrix_param() {
+    >&2 echo "Введите параметры матрицы платежей:"
+    read -r -p "n: " n_ans
+    read -r -p "c_1: " c1_ans
+    read -r -p "c_2: " c2_ans
+    read -r -p "c_3: " c3_ans
+    echo "$n_ans $c1_ans $c2_ans $c3_ans"
+}
+
+
+ans=$(prompt_main_menu)
+case $ans in
+    1)
+        algo=$(prompt_packing_algo)
+        flname=$(prompt_file)
+        machinenum=$(prompt_num_machines)
+
+        pushd lab2 1>/dev/null 2>&1
+            go run main.go -p -n ${machinenum} -${algo} -f "../${flname}"
+        popd 1>/dev/null 2>&1
+        ;;
+    2)
+        matrix_param=$(prompt_matrix_param)
+        output_matrix_flag=$(prompt_yes_no "Вывести матрицу платежей?" "-output-matrix")
+        output_strategies_flag=$(prompt_yes_no "Вывести оптимальные стратегии?" "-output-strategies")
+        output_gc_flag=$(prompt_yes_no "Вывести цену игры?" "-output-gc")
+        output_iterations_flag=$(prompt_yes_no "Вывести число итераций?" "-output-iterations")
+        output_time_flag=$(prompt_yes_no "Вывести время, потраченное на вычисления?" "-output-time")
+        eps=$(prompt_epsilon)
+
+        pushd lab3 1>/dev/null 2>&1
+            go run main.go ${output_matrix_flag} ${output_strategies_flag} ${output_gc_flag} ${output_iterations_flag} ${output_time_flag} -eps ${eps} ${matrix_param}
+        popd 1>/dev/null 2>&1
+        ;;
+    3)
+        exit;;
+esac
