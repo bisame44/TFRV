@@ -3,7 +3,7 @@ package dsp
 import (
 	"fmt"
 
-	"https://github.com/bisame44/TFRV/tree/main/TFRV/lab2/tasks"
+	"github.com/bisame44/TFRV/tree/main/TFRV/lab2/tasks"
 )
 
 func FFDH(records []tasks.Task, n int) ([][]tasks.Task, error) {
