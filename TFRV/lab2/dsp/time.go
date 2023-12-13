@@ -1,6 +1,6 @@
 package dsp
 
-import "github.com/Belstowe/distrib-cs-1-autumn/lab2/tasks"
+import "github.com/bisame44/TFRV/tree/main/TFRV/lab2/tasks"
 
 func TotalTime(taskLevels [][]tasks.Task) int {
 	tt := 0
