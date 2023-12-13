@@ -10,9 +10,9 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/Belstowe/distrib-cs-1-autumn/lab2/dsp"
-	"github.com/Belstowe/distrib-cs-1-autumn/lab2/output"
-	"github.com/Belstowe/distrib-cs-1-autumn/lab2/tasks"
+	"github.com/bisame44/TFRV/tree/main/TFRV/lab2/dsp"
+	"github.com/bisame44/TFRV/tree/main/TFRV/lab2/output"
+	"github.com/bisame44/TFRV/tree/main/TFRV/lab2/tasks"
 )
 
 const (
