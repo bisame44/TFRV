@@ -3,8 +3,8 @@ package dsp_test
 import (
 	"testing"
 
-	"https://github.com/bisame44/TFRV/tree/main/TFRV/lab2/dsp"
-	"https://github.com/bisame44/TFRV/tree/main/TFRV/lab2/tasks"
+	"github.com/bisame44/TFRV/tree/main/TFRV/lab2/dsp"
+	"github.com/bisame44/TFRV/tree/main/TFRV/lab2/tasks"
 )
 
 func TestFFDH(t *testing.T) {
