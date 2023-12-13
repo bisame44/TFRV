@@ -1,3 +1,2 @@
-module github.com/Belstowe/distrib-cs-1-autumn/lab2
-
+module github.com/bisame44/TFRV/tree/main/TFRV/lab2
 go 1.19
