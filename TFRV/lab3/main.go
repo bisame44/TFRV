@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Belstowe/distrib-cs-1-autumn/lab3/stm"
+	"github.com/bisame44/TFRV/tree/main/TFRV/lab3/stm"
 )
 
 var (
