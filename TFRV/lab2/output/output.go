@@ -1,6 +1,6 @@
 package output
 
-import "github.com/Belstowe/distrib-cs-1-autumn/lab2/tasks"
+import "github.com/bisame44/TFRV/tree/main/TFRV/lab2/tasks"
 
 type AlgoEfficiency struct {
 	PerformanceTime   float64
